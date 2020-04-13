@@ -20,7 +20,6 @@ class AddBikeScreen extends StatelessWidget {
       body: SafeArea(
         child: Form(
           key: _formKey,
-          autovalidate: true,
           child: ListView(
             padding: const EdgeInsets.all(10.0),
             children: <Widget>[
