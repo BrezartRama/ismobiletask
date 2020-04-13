@@ -21,7 +21,7 @@ class Bike {
 
   Bike.fromMap(Map<String, dynamic> map):
     this.id = map['id'],
-    this.frameSize = map['frameSize'], // update fields
+    this.frameSize = map['frameSize'],
     this.category = map['category'],
     this.location = map['location'],
     this.name = map['name'],

@@ -17,13 +17,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    print('Po hin qetu');
     super.initState();
   }
 
   @override
   void didChangeDependencies() {
-    print('Qetu sdi ======');
     if (_isInit) {
       setState(() {
         _isLoading = true;
@@ -52,7 +50,6 @@ class _HomePageState extends State<HomePage> {
           :  BikesList(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          print('Fab butoni osht shtyp');
           Navigator.pushNamed(context, AddBikeScreen.routeName);
         },
         child: Icon(Icons.add),

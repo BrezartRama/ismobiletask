@@ -161,7 +161,6 @@ class EditBikeScreen extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    print('submit FOrm');
                     final FormState form = _formKey.currentState;
                     if (form.validate()) {
                       form.save();

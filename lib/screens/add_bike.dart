@@ -171,8 +171,6 @@ class AddBikeScreen extends StatelessWidget {
                         "description": description
                       });
 
-                      // print(bike.toString());
-                      //print(name+' '+ frameSize + ' '+category+' '+location+' '+priceRange+' ' + description);
                       provider.addBike(bike);
 
                       Navigator.pushAndRemoveUntil(

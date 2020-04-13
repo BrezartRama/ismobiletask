@@ -25,8 +25,6 @@ class BikeItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<BikesProvider>(context);
-    print('BikeItem Page ======');
-
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Container(

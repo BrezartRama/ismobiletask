@@ -15,8 +15,6 @@ class MyApp extends StatelessWidget {
     return
      MultiProvider(
       providers: [
-        // FutureProvider(create: (_) => BikesProvider().loadBikes()),
-        // ChangeNotifierProvider(create: (_)=>BikesProvider(),),
         ChangeNotifierProvider.value(
           value: BikesProvider(),
         ),
