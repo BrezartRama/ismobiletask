@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ismobiletask/providers/bikes_provider.dart';
 import 'package:ismobiletask/screens/bike_detail.dart';
+import 'package:ismobiletask/screens/edit_bike.dart';
+import 'package:ismobiletask/screens/homepage.dart';
+import 'package:provider/provider.dart';
 
 class BikeItem extends StatelessWidget {
   final int id;
@@ -20,6 +24,9 @@ class BikeItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<BikesProvider>(context);
+    print('BikeItem Page ======');
+
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Container(
@@ -146,16 +153,16 @@ class BikeItem extends StatelessWidget {
                             Container(
                               width: 40,
                               height: 40,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(8.0),
-                                  ),
-                                  color: Colors.white,
-                                  border: Border.all(
-                                      width: 3.0, color: Colors.black45)),
-                              child: Icon(
-                                Icons.edit,
+                              
+                              child: IconButton(
+                                icon: Icon(Icons.edit),
                                 color: Colors.green,
+                                onPressed: () {
+                                  Navigator.of(context).pushNamed(
+                                    EditBikeScreen.routeName,
+                                    arguments: id,
+                                  );
+                                },
                               ),
                             ),
                             Padding(
@@ -163,16 +170,20 @@ class BikeItem extends StatelessWidget {
                               child: Container(
                                 width: 40,
                                 height: 40,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(8.0),
-                                    ),
-                                    color: Colors.white,
-                                    border: Border.all(
-                                        width: 3.0, color: Colors.black45)),
-                                child: Icon(
-                                  Icons.delete,
+                                child: IconButton(
+                                  icon: Icon(Icons.delete),
                                   color: Colors.red,
+                                  alignment: Alignment.topRight,
+                                  onPressed: () {
+                                    provider.deleteBike(id);
+                                    
+                                    Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => HomePage()),
+                                      (Route<dynamic> route) => false,
+                                    );
+                                  },
                                 ),
                               ),
                             )

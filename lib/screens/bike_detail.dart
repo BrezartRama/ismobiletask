@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ismobiletask/models/bike.dart';
-//import 'package:ismobiletask/providers/bikes_provider.dart';
+import 'package:ismobiletask/providers/bikes_provider.dart';
 import 'package:provider/provider.dart';
 
 class BikeDetailScreen extends StatelessWidget {
@@ -9,9 +8,9 @@ class BikeDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bikeId = ModalRoute.of(context).settings.arguments;
-    final loadedBike = Provider.of<List<Bike>>(context)
+    final loadedBike = Provider.of<BikesProvider>(context).items
         .firstWhere((bike) => bike.id == bikeId);
-     
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Bike Details'),
@@ -32,13 +31,11 @@ class BikeDetailScreen extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(15.0)),
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                //color: Colors.grey[400],
                 child: Padding(
                   padding: const EdgeInsets.only(
                       left: 15.0, top: 25, right: 8.0, bottom: 15.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    //mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Text(
                         loadedBike.name,
@@ -123,12 +120,15 @@ class BikeDetailScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      SizedBox(height: 8.0,),
+                      SizedBox(
+                        height: 8.0,
+                      ),
                       Text(
                         loadedBike.description,
                         style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 23,
+                          fontStyle: FontStyle.italic
                         ),
                       ),
                     ],
@@ -140,7 +140,5 @@ class BikeDetailScreen extends StatelessWidget {
         ],
       ),
     );
-
-   
   }
 }

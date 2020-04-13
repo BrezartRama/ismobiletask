@@ -19,24 +19,24 @@ class Bike {
     this.description,
   });
 
-  Bike.fromJson(Map<String, dynamic> json):
-  this.id = json['id'],
-  this.frameSize = json['frameSize'],
-  this.category = json['category'],
-  this.location = json['location'],
-  this.name = json['name'],
-  this.imageUrl = json['photoUrl'],
-  this.priceRange = json['priceRange'],
-  this.description = json['description'];
+  Bike.fromMap(Map<String, dynamic> map):
+    this.id = map['id'],
+    this.frameSize = map['frameSize'], // update fields
+    this.category = map['category'],
+    this.location = map['location'],
+    this.name = map['name'],
+    this.imageUrl = map['photoUrl'],
+    this.priceRange = map['priceRange'],
+    this.description = map['description'];
 
-  Map<String, dynamic> toJson() =>{
+  Map<String, dynamic> toMap() =>{
     'id': this.id,
-    'frameSize': this.frameSize,
+    'frame_size': this.frameSize,
     'category' : this.category,
     'location' : this.location,
     'name': this.name,
-    'photoUrl' : this.imageUrl,
-    'priceRange': this.priceRange,
+    'photo_url' : this.imageUrl,
+    'price_range': this.priceRange,
     'description': this.description
   };
 

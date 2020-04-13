@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ismobiletask/screens/add_bike.dart';
 import 'package:ismobiletask/screens/bike_detail.dart';
+import 'package:ismobiletask/screens/edit_bike.dart';
 import 'package:ismobiletask/screens/homepage.dart';
 import 'package:provider/provider.dart';
 
@@ -10,10 +12,14 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return
+     MultiProvider(
       providers: [
-        //ChangeNotifierProvider(create: (_) => BikesProvider()),
-        FutureProvider(create: (_) => BikesProvider().loadBike()),
+        // FutureProvider(create: (_) => BikesProvider().loadBikes()),
+        // ChangeNotifierProvider(create: (_)=>BikesProvider(),),
+        ChangeNotifierProvider.value(
+          value: BikesProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -22,6 +28,9 @@ class MyApp extends StatelessWidget {
         home: HomePage(),
         routes: {
           BikeDetailScreen.routeName: (ctx) => BikeDetailScreen(),
+          AddBikeScreen.routeName: (ctx)=> AddBikeScreen(), 
+          EditBikeScreen.routeName:(ctx)=> EditBikeScreen(),
+          HomePage.routeName:(ctx)=>HomePage(),
         },
       ),
     );
